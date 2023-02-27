@@ -33,9 +33,15 @@ export type  Patient = {
 }
 
 export type Presciption = {
-    
+    date : string,
+    id : number,
+    diagnosis : string
 }
 
 export type PrescriptionDetails = {
-
+    date : string,
+    diagnosis : string,
+    bp_low : number,
+    bp_high : number,
+    heart_rate : number
 }
