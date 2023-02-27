@@ -45,6 +45,9 @@ function processPatientInfo(data : any[] | null){
             diagnosis : element.diagnosis,
             id : element.id
         })
+        prescriptionDetails.push({
+            ...element
+        })
 
         let el : any[] = element.prescribed_drugs
         el.forEach(med =>{
@@ -68,8 +71,7 @@ function processPatientInfo(data : any[] | null){
     medicines.sort((a, b)=>{
         return new Date(a.startDate).getTime() - new Date(b.startDate).getTime();
     })
-    console.log(medicines)
-    console.log(medicineDetais)
+    
     medicineDetais.forEach(async (m, i) =>{
         const res = await supabase.from('reacting_drugs').select().eq('id1', m.id).select('*,Drug!reacting_drugs_id2_fkey(*)');
         console.log(res)
@@ -85,6 +87,10 @@ function processPatientInfo(data : any[] | null){
         })
         medicineDetais[i].reacting_drugs = reactions;
     })
+    console.log(medicines)
+    console.log(medicineDetais)
+    console.log(prescriptions)
+    console.log(prescriptionDetails)
 }
 
 

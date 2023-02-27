@@ -37,7 +37,7 @@ const PatientSearch = () => {
             )
             console.log(resp)
             processPatientInfo(resp.data);
-            // await router.push(`/dashboard`);
+            await router.push(`/dashboard`);
         }
     }
 
