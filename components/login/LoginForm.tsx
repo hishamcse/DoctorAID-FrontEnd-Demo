@@ -3,6 +3,7 @@ import {Form, Image, Button, Container, Spinner} from "react-bootstrap";
 import React, {useRef, useState} from "react";
 import {useRouter} from "next/router";
 import {BiLogIn} from "react-icons/bi";
+import supabase from "../../db"
 
 const server = 'http://localhost:3000';
 
@@ -16,12 +17,23 @@ const LoginForm = () => {
     const inputIdRef = useRef<HTMLInputElement | null>(null);
     const inputPasswordRef = useRef<HTMLInputElement | null>(null);
     const [formValid, setFormValid] = useState(true);
+    const [showErr, setShowErr] = useState(false);
 
     const router = useRouter();
 
-    const loginDataHandler = async (data: any) => {
+    const loginDataHandler = async (data1: any) => {
+        console.log(data1);
+        const {data, error} = await supabase.from('Doctor').select().match({email : data1.email, password : data1.password});
         console.log(data);
-        await router.push(`/doctor`);
+        console.log(error);
+        if(error){
+            setShowErr(true);
+        }
+        else if(data.length == 0){
+            setShowErr(true);
+        }
+        else
+            await router.push(`/doctor`);
     }
 
     const submitHandler = async (e: React.FormEvent) => {

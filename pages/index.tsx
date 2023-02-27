@@ -10,7 +10,11 @@ export default function Home() {
 
     const [showLogin, setShowLogin] = useState(false);
 
-    const showLoginHandler = () => {
+    const showLoginHandler = async () => {
+        // console.log(process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY);
+        // const {data, error} = await supabase.from('Drug').select().eq
+        // console.log(data)
+        // console.log(error);
         setShowLogin(true);
     }
 
