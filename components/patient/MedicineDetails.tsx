@@ -9,7 +9,7 @@ function Arr(cont : string[], title : string){
         <Divider />
         <ul>
         {
-            cont.map(w=><li>{w}</li>)
+            cont.map((w, index)=><li  key={index + Math.random().toString()} >{w}</li>)
         }
         </ul>
     </p>
@@ -58,13 +58,13 @@ const MedicineDetails:React.FC<{medicine: MedicineDetails}> = (props) => {
                     <h5><b>Reacing Drugs</b></h5>
                 </p>
             }
-            {props.medicine.reacting_drugs.map(d =>{
+            {props.medicine.reacting_drugs.map((d, index) =>{
                 return (
-                    <p>
+                    <p  key={index + Math.random().toString()}>
                         {d.generic_name}
                         <ul>
                             {
-                                d.reactions.map(s => <li>{s}</li>)
+                                d.reactions.map((s,index) => <li  key={index + Math.random().toString()} >{s}</li>)
                             }
                         </ul>
                     </p>

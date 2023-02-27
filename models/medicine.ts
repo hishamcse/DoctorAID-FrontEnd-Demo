@@ -33,5 +33,9 @@ export type  Patient = {
 }
 
 export type Presciption = {
+    
+}
+
+export type PrescriptionDetails = {
 
 }
