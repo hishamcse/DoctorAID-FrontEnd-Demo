@@ -43,5 +43,7 @@ export type PrescriptionDetails = {
     diagnosis : string,
     bp_low : number,
     bp_high : number,
-    heart_rate : number
+    heart_rate : number,
+    symptomps : string[],
+    remarks : string[]
 }
