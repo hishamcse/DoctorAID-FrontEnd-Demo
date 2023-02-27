@@ -4,6 +4,7 @@ import React, {useRef, useState} from "react";
 import {useRouter} from "next/router";
 import {BiLogIn} from "react-icons/bi";
 import supabase from "../../db"
+import {setPatient} from '../../global'
 
 const server = 'http://localhost:3000';
 
@@ -32,8 +33,9 @@ const LoginForm = () => {
         else if(data.length == 0){
             setShowErr(true);
         }
-        else
+        else{
             await router.push(`/doctor`);
+        }
     }
 
     const submitHandler = async (e: React.FormEvent) => {

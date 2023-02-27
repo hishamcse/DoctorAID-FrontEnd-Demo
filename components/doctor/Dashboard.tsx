@@ -22,17 +22,18 @@ import {alpha, TextField} from '@mui/material';
 import Tab from 'react-bootstrap/Tab';
 import Tabs from 'react-bootstrap/Tabs';
 import PatientView from "../patient/PatientView";
+import { getPatient } from '@/global';
 
 const drawerWidth = 220;
 
-const patientInfo = {
-    id: 123,
-    name: 'John Doe',
-    age: 23,
-    date: '2023-02-18',
-    last_visit: '2022-10-10',
-    // address: '1234 Main St, New York, NY 10001',
-}
+// let patientInfo = {
+//     id: 123,
+//     name: 'John Doe',
+//     age: 23,
+//     date: '2023-02-18',
+//     last_visit: '2022-10-10',
+//     // address: '1234 Main St, New York, NY 10001',
+// }
 
 const openedMixin = (theme: Theme): CSSObject => ({
     width: drawerWidth,
@@ -107,7 +108,13 @@ const Drawer = styled(MuiDrawer, {shouldForwardProp: (prop) => prop !== 'open'})
 export default function Dashboard() {
     const theme = useTheme();
     const [open, setOpen] = React.useState(false);
+    const [patientInfo, setPatientInfo] = React.useState(getPatient())
 
+    // React.useEffect(()=>{
+    //     setPatientInfo(getPatient());
+    //     console.log(getPatient())
+    // }, []);
+        
     const handleDrawerOpen = () => {
         setOpen(true);
     };

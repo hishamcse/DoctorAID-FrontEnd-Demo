@@ -6,37 +6,38 @@ import Box from '@mui/material/Box';
 import SingleMedicine from "./SingleMedicine";
 import {useEffect} from "react";
 import MedicineDetails from "./MedicineDetails";
+import { getMedicineDetails, getMedicines } from '@/global';
 
-const medicines = [
-    {
-        name: "Napa Plus",
-        genericName: "Paracetamol",
-        dosage: "50mg",
-        frequency: "1 + 0 + 1",
-        startDate: "01/01/2022",
-    },
-    {
-        name: "Tylenol",
-        genericName: "acetaminophen",
-        dosage: "10mg",
-        frequency: "0 + 0 + 1",
-        startDate: "01/10/2021",
-    },
-    {
-        name: "Humulin N",
-        genericName: "insulin",
-        dosage: "100mg",
-        frequency: "1 + 0 + 0",
-        startDate: "01/08/2021",
-    },
-    {
-        name: "Phoslo",
-        genericName: "calcium acetate",
-        dosage: "50mg",
-        frequency: "1 + 0 + 1",
-        startDate: "01/08/2021",
-    }
-];
+// const medicines = [
+//     {
+//         name: "Napa Plus",
+//         genericName: "Paracetamol",
+//         dosage: "50mg",
+//         frequency: "1 + 0 + 1",
+//         startDate: "01/01/2022",
+//     },
+//     {
+//         name: "Tylenol",
+//         genericName: "acetaminophen",
+//         dosage: "10mg",
+//         frequency: "0 + 0 + 1",
+//         startDate: "01/10/2021",
+//     },
+//     {
+//         name: "Humulin N",
+//         genericName: "insulin",
+//         dosage: "100mg",
+//         frequency: "1 + 0 + 0",
+//         startDate: "01/08/2021",
+//     },
+//     {
+//         name: "Phoslo",
+//         genericName: "calcium acetate",
+//         dosage: "50mg",
+//         frequency: "1 + 0 + 1",
+//         startDate: "01/08/2021",
+//     }
+// ];
 
 interface TabPanelProps {
     children?: React.ReactNode;
@@ -72,6 +73,7 @@ function a11yProps(index: number) {
 }
 
 export default function Medications() {
+    const [medicines , setMedicines] = React.useState(getMedicines())
     const [value, setValue] = React.useState(0);
 
     // useEffect(() => {
@@ -104,7 +106,7 @@ export default function Medications() {
                 value={value}
                 onChange={handleChange}
                 aria-label="Vertical tabs example"
-                sx={{ borderRight: 1, borderColor: 'divider', width: '100%', pl:10, pr:10 }}
+                sx={{ borderRight: 1, borderColor: 'divider', width: '30%', pl:10, pr:10 }}
             >
                 {medicines.map((medicine, index) => {
                     return (
@@ -115,7 +117,7 @@ export default function Medications() {
             {medicines.map((medicine, index) => {
                 return (
                     <TabPanel key={index + Math.random().toString()} value={value} index={index}>
-                        <MedicineDetails medicine={medicine}/>
+                        <MedicineDetails medicine={getMedicineDetails(medicine.id)!}/>
                     </TabPanel>
                 )
             })}

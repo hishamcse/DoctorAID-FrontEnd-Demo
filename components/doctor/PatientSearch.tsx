@@ -3,6 +3,8 @@ import {Form, Image, Button, Container, Spinner} from "react-bootstrap";
 import React, {useRef, useState} from "react";
 import {useRouter} from "next/router";
 import {BiLogIn} from "react-icons/bi";
+import supabase from "../../db"
+import { processPatientInfo, setPatient } from '@/global';
 
 const server = 'http://localhost:3000';
 
@@ -16,12 +18,27 @@ const PatientSearch = () => {
     const inputIdRef = useRef<HTMLInputElement | null>(null);
     const inputNameRef = useRef<HTMLInputElement | null>(null);
     const [formValid, setFormValid] = useState(true);
+    const [err, setErr] = useState(false);
 
     const router = useRouter();
 
-    const patientDataHandler = async (data: any) => {
+    const patientDataHandler = async (data1: any) => {
+        // Tanzeem Hisham
+        console.log(data1);
+        const {data,error } = await supabase.from('Patient').select().match({id : data1.patientId, name : data1.patientName});
         console.log(data);
-        await router.push(`/dashboard`);
+        if(error || data.length == 0){
+            setErr(true);
+        }
+        else{
+            setPatient(data[0]);
+            const resp = await supabase.from('Prescription').select(
+                `*,prescribed_drugs(*, Drug(*))`
+            )
+            console.log(resp)
+            processPatientInfo(resp.data);
+            await router.push(`/dashboard`);
+        }
     }
 
     const submitHandler = async (e: React.FormEvent) => {
