@@ -1,9 +1,15 @@
-import { MedicineDetails, Patient, Medicine } from "./models/medicine";
+import { MedicineDetails, Patient, Medicine, Prescription, PrescriptionDetails } from "./models/medicine";
 
 import supabase from "./db";
 
 
-let patient : Patient ;
+let patient : Patient  = {
+    age : 24,
+    date : "",
+    id : 1,
+    last_visit : '',
+    name : ''
+};
 let medicines : Medicine[] = []
 let medicineDetais : MedicineDetails[] = []
 function setPatient(data : any){
@@ -23,13 +29,23 @@ function setPatient(data : any){
     // patient.last_visit = data.last_visit;
 }
 
+let prescriptions : Prescription[] = [];
+let prescriptionDetails : PrescriptionDetails[] = [];
 
 function processPatientInfo(data : any[] | null){
     if(data == null)
         return;
     medicines = []
     medicineDetais = []
+    prescriptions = []
+    prescriptionDetails = []
     data.forEach(element => {
+        prescriptions.push({
+            date : element.date,
+            diagnosis : element.diagnosis,
+            id : element.id
+        })
+
         let el : any[] = element.prescribed_drugs
         el.forEach(med =>{
             // console.log(med)

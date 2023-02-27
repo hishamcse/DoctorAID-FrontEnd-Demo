@@ -32,7 +32,7 @@ export type  Patient = {
     last_visit : string
 }
 
-export type Presciption = {
+export type Prescription = {
     date : string,
     id : number,
     diagnosis : string
