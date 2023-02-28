@@ -26,12 +26,61 @@ function customCard(cont : string, title : string){
     return (
         <React.Fragment>
             <CardContent>
-                <Typography variant="h5" component="div">
+                <Typography variant="h6" component="div">
                     {title}
                 </Typography>
                 <hr/>
                 <Typography sx={{ mb: 1.5 }} color="text.secondary">
                     {cont}
+                </Typography>
+            </CardContent>
+        </React.Fragment>
+    )
+}
+
+function Arr2(cont : Medicine[], title : string){
+    return (
+        <p>
+            <h5><b>{title}</b></h5>
+            <Divider />
+            <br/>
+            <div style={{display: "flex", width: "100%"}}>
+            {
+                cont.map((w, index)=>{
+                    return (
+                        <div>
+                           <Box key={index + Math.random().toString()} sx={{ width: "90%"}}>
+                             <Card variant="outlined">{customCard2(w)}</Card>
+                           </Box>
+                            &nbsp;
+                        </div>
+                    )
+                })
+            }
+            </div>
+        </p>
+    )
+}
+
+function customCard2(cont : Medicine){
+    const dateStr = new Date(cont.startDate).toDateString();
+
+    return (
+        <React.Fragment>
+            <CardContent sx={{bgcolor: '#F2F4F3'}}>
+                <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
+                    {dateStr}
+                </Typography>
+                <Typography variant="h5" component="div">
+                    {cont.name}
+                </Typography>
+                <Typography sx={{ mb: 1.5 }} color="text.secondary">
+                    {cont.genericName}
+                </Typography>
+                <Typography variant="body2">
+                    {cont.dosage}
+                    <br />
+                    {cont.frequency}
                 </Typography>
             </CardContent>
         </React.Fragment>
@@ -53,6 +102,7 @@ function Description( title : string, d : string){
 const PresciptionDetails:React.FC<{prescription: PrescriptionDetails}> = (props) => {
 
     const bp = props.prescription.bp_high + " / " + props.prescription.bp_low + " mmHg";
+    const dateStr = new Date(props.prescription.date).toDateString();
 
     return (
         <div style={{
@@ -62,7 +112,7 @@ const PresciptionDetails:React.FC<{prescription: PrescriptionDetails}> = (props)
         <div>
             <h5>Date
             <span style={{ color: "#bbb" }}>
-                - {props.prescription.date}
+                - {dateStr}
             </span>
             </h5>
             <Divider />
@@ -75,14 +125,16 @@ const PresciptionDetails:React.FC<{prescription: PrescriptionDetails}> = (props)
             </h5>
             <br/>
 
-            <Box sx={{ minWidth: 150, display: "flex" }}>
+            <Box sx={{ minWidth: 250, display: "flex" }}>
                 <Card variant="outlined">{customCard(bp, "Blood Pressure")}</Card>
                 &nbsp;&nbsp;
                 <Card variant="outlined">{customCard(props.prescription.heart_rate.toString(),"Heart Rate")}</Card>
             </Box>
             <br/>
-            {Arr(props.prescription.symptomps, "Symptomps")}
+
+            {Arr(props.prescription.symptomps, "Symptoms")}
             {Arr(props.prescription.remarks, "Remarks")}
+            {Arr2(props.prescription.prescribed_drugs, "Medicines")}
 
             
             {/* <p>

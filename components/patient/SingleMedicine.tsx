@@ -9,11 +9,13 @@ import {Medicine} from "../../models/medicine";
 
 const SingleMedicine: React.FC<{ medicine: Medicine }> = (props) => {
 
+    const dateStr = new Date(props.medicine.startDate).toDateString();
+
     const card = (
         <React.Fragment>
             <CardContent sx={{bgcolor: '#F2F4F3'}}>
                 <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-                    {props.medicine.startDate}
+                    {dateStr}
                 </Typography>
                 <Typography variant="h5" component="div">
                     {props.medicine.name}

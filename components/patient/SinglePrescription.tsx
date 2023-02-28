@@ -9,11 +9,13 @@ import {Prescription} from "../../models/medicine";
 
 const SinglePrescription: React.FC<{ prescription: Prescription }> = (props) => {
 
+    const dateStr = new Date(props.prescription.date).toDateString();
+
     const card = (
         <React.Fragment>
             <CardContent sx={{bgcolor: '#F2F4F3'}}>
                 <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-                    {props.prescription.date}
+                    {dateStr}
                 </Typography>
                 <Typography variant="h5" component="div">
                     {props.prescription.diagnosis}
@@ -24,9 +26,9 @@ const SinglePrescription: React.FC<{ prescription: Prescription }> = (props) => 
                     <br />
                 </Typography>
             </CardContent>
-            <CardActions sx={{bgcolor: '#F2F4F3'}}>
-                <Button size="small">See Prescription</Button>
-            </CardActions>
+            {/*<CardActions sx={{bgcolor: '#F2F4F3'}}>*/}
+            {/*    <Button size="small">See Prescription</Button>*/}
+            {/*</CardActions>*/}
         </React.Fragment>
     );
 

@@ -198,7 +198,7 @@ export default function Dashboard() {
                                         disabled
                                         id="standard-disabled"
                                         label="Date"
-                                        defaultValue={patientInfo.date}
+                                        defaultValue={new Date(patientInfo.date).toDateString()}
                                         variant="standard"
                                         size="small"
                                         sx={{
@@ -211,7 +211,7 @@ export default function Dashboard() {
                                         disabled
                                         id="standard-disabled"
                                         label="Last Visit"
-                                        defaultValue={patientInfo.last_visit}
+                                        defaultValue={new Date(patientInfo.last_visit).toDateString()}
                                         variant="standard"
                                         size="small"
                                         sx={{
@@ -238,7 +238,7 @@ export default function Dashboard() {
                 </DrawerHeader>
                 <Divider sx={{pt: 7}}/>
                 <List>
-                    {['Notifications', 'Edit Profile', 'Improtant'].map((text, index) => (
+                    {['Notifications', 'Edit Profile', 'Important'].map((text, index) => (
                         <ListItem key={text} disablePadding sx={{display: 'block'}}>
                             <ListItemButton
                                 sx={{
@@ -292,7 +292,7 @@ export default function Dashboard() {
                 <DrawerHeader/>
                 <Box sx={{ width: '100%' }}>
                     <Tabs
-                        defaultActiveKey="test"
+                        defaultActiveKey="medication"
                         id="justify-tab-example"
                         className="mb-3"
                         justify
@@ -301,8 +301,8 @@ export default function Dashboard() {
                         </Tab>
                         <Tab eventKey="demography" title="Demography" disabled>
                         </Tab>
-                        <Tab eventKey="test" title="Diagnostics">
-                            <PatientView type={"diagnostics"} />
+                        <Tab eventKey="test" title="Diagnostics" disabled>
+                            <PatientView type={"diagnostics"}/>
                         </Tab>
                         <Tab eventKey="prescription" title="Prescriptions">
                             <PatientView type={"prescriptions"} />

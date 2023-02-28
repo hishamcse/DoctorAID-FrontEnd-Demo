@@ -45,7 +45,6 @@ const MedicineDetails:React.FC<{medicine: MedicineDetails}> = (props) => {
             </h6>
             <Divider />
             <br/>
-            <br/>
             {Description("Description", props.medicine.description)}
             {Arr(props.medicine.dosage, "Dosage")}
             {Arr(props.medicine.warnings, "Warnings")}
