@@ -49,7 +49,7 @@ function Arr2(cont : Medicine[], title : string){
                 cont.map((w, index)=>{
                     return (
                         <div key={index + Math.random().toString()} style={{ width: "100%", margin: "10px"}}>
-                           <Box key={index + Math.random().toString()} sx={{ width: "100%"}}>
+                           <Box key={index + Math.random().toString()}>
                              <Card variant="outlined">{customCard2(w)}</Card>
                            </Box>
                         </div>
