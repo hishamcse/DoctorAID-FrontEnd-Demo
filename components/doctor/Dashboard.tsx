@@ -77,7 +77,7 @@ const AppBar = styled(MuiAppBar, {
         easing: theme.transitions.easing.sharp,
         duration: theme.transitions.duration.leavingScreen,
     }),
-    backgroundColor: alpha(theme.palette.common.black, 0.45),
+    backgroundColor: alpha(theme.palette.common.black, 1),
     ...(open && {
         marginLeft: drawerWidth,
         width: `calc(100% - ${drawerWidth}px)`,
@@ -162,8 +162,11 @@ export default function Dashboard() {
                                         size="small"
                                         sx={{
                                             "& .MuiInputBase-input.Mui-disabled": {
-                                                WebkitTextFillColor: "#000000",
+                                                WebkitTextFillColor: "#ffffff",
                                             },
+                                        }}
+                                        InputLabelProps={{
+                                            style: { color: '#ffffff' },
                                         }}
                                     />
                                     <TextField
@@ -175,8 +178,11 @@ export default function Dashboard() {
                                         size="small"
                                         sx={{
                                             "& .MuiInputBase-input.Mui-disabled": {
-                                                WebkitTextFillColor: "#000000",
+                                                WebkitTextFillColor: "#ffffff",
                                             },
+                                        }}
+                                        InputLabelProps={{
+                                            style: { color: '#ffffff' },
                                         }}
                                     />
                                     <TextField
@@ -188,8 +194,11 @@ export default function Dashboard() {
                                         size="small"
                                         sx={{
                                             "& .MuiInputBase-input.Mui-disabled": {
-                                                WebkitTextFillColor: "#000000",
+                                                WebkitTextFillColor: "#ffffff",
                                             },
+                                        }}
+                                        InputLabelProps={{
+                                            style: { color: '#ffffff' },
                                         }}
                                     />
                                 </div>
@@ -203,8 +212,11 @@ export default function Dashboard() {
                                         size="small"
                                         sx={{
                                             "& .MuiInputBase-input.Mui-disabled": {
-                                                WebkitTextFillColor: "#000000",
+                                                WebkitTextFillColor: "#ffffff",
                                             },
+                                        }}
+                                        InputLabelProps={{
+                                            style: { color: '#ffffff' },
                                         }}
                                     />
                                     <TextField
@@ -216,8 +228,11 @@ export default function Dashboard() {
                                         size="small"
                                         sx={{
                                             "& .MuiInputBase-input.Mui-disabled": {
-                                                WebkitTextFillColor: "#000000",
+                                                WebkitTextFillColor: "#ffffff",
                                             },
+                                        }}
+                                        InputLabelProps={{
+                                            style: { color: '#ffffff' },
                                         }}
                                     />
                                 </div>
