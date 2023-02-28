@@ -37,7 +37,7 @@ const PatientSearch = () => {
             )
             console.log(resp)
             processPatientInfo(resp.data);
-            // await router.push(`/dashboard`);
+            await router.push(`/dashboard`);
         }
     }
 
@@ -88,7 +88,7 @@ const PatientSearch = () => {
                 <Form.Floating className="mb-4 mt-5">
                     <Form.Control
                         id="floatingInputCustom"
-                        type="text"
+                        type="password"
                         placeholder="patientId"
                         ref={inputIdRef}
                     />
@@ -101,7 +101,7 @@ const PatientSearch = () => {
             <Form.Floating className="mb-4">
                 <Form.Control
                     id="floatingPasswordCustom"
-                    type="password"
+                    type="text"
                     placeholder="patientName"
                     ref={inputNameRef}
                 />

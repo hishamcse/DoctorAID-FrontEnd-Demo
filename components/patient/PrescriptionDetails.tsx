@@ -1,6 +1,12 @@
 import React from "react";
 import {Medicine,  PrescriptionDetails} from "../../models/medicine";
 import {Divider} from "@mui/material";
+import CardContent from "@mui/material/CardContent";
+import Typography from "@mui/material/Typography";
+import CardActions from "@mui/material/CardActions";
+import Button from "@mui/material/Button";
+import Card from "@mui/material/Card";
+import Box from "@mui/material/Box";
 
 function Arr(cont : string[], title : string){
     return (
@@ -15,6 +21,23 @@ function Arr(cont : string[], title : string){
     </p>
     )
 }
+
+function customCard(cont : string, title : string){
+    return (
+        <React.Fragment>
+            <CardContent>
+                <Typography variant="h5" component="div">
+                    {title}
+                </Typography>
+                <hr/>
+                <Typography sx={{ mb: 1.5 }} color="text.secondary">
+                    {cont}
+                </Typography>
+            </CardContent>
+        </React.Fragment>
+    )
+}
+
 function Description( title : string, d : string){
     return (
         <p>
@@ -29,6 +52,8 @@ function Description( title : string, d : string){
 
 const PresciptionDetails:React.FC<{prescription: PrescriptionDetails}> = (props) => {
 
+    const bp = props.prescription.bp_high + " / " + props.prescription.bp_low + " mmHg";
+
     return (
         <div style={{
             fontSize : "20px"
@@ -42,14 +67,20 @@ const PresciptionDetails:React.FC<{prescription: PrescriptionDetails}> = (props)
             </h5>
             <Divider />
             <br/>
-            <br/>
-            <h5>Diagnosis
-            <span style={{ color: "#bbb" }}>
-                - {props.prescription.diagnosis}
+            <h5><b>Diagnosis</b><br/>
+                <Divider />
+            <span>
+                {props.prescription.diagnosis}
             </span>
             </h5>
-            
-            
+            <br/>
+
+            <Box sx={{ minWidth: 150, display: "flex" }}>
+                <Card variant="outlined">{customCard(bp, "Blood Pressure")}</Card>
+                &nbsp;&nbsp;
+                <Card variant="outlined">{customCard(props.prescription.heart_rate.toString(),"Heart Rate")}</Card>
+            </Box>
+            <br/>
             {Arr(props.prescription.symptomps, "Symptomps")}
             {Arr(props.prescription.remarks, "Remarks")}
 

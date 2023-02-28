@@ -24,9 +24,9 @@ const SinglePrescription: React.FC<{ prescription: Prescription }> = (props) => 
                     <br />
                 </Typography>
             </CardContent>
-            {/* <CardActions sx={{bgcolor: '#F2F4F3'}}>
+            <CardActions sx={{bgcolor: '#F2F4F3'}}>
                 <Button size="small">See Prescription</Button>
-            </CardActions> */}
+            </CardActions>
         </React.Fragment>
     );
 
