@@ -48,11 +48,11 @@ function Arr2(cont : Medicine[], title : string){
             {
                 cont.map((w, index)=>{
                     return (
-                        <div key={index + Math.random().toString()} >
-                           <Box key={index + Math.random().toString()} sx={{ width: "90%"}}>
+                        <div key={index + Math.random().toString()} style={{ width: "100%", margin: "10px"}}>
+                           <Box key={index + Math.random().toString()} sx={{ width: "100%"}}>
                              <Card variant="outlined">{customCard2(w)}</Card>
                            </Box>
-                            &nbsp;
+                            {/*&nbsp;*/}
                         </div>
                     )
                 })
@@ -106,7 +106,7 @@ const PresciptionDetails:React.FC<{prescription: PrescriptionDetails}> = (props)
 
     return (
         <div style={{
-            fontSize : "20px"
+            fontSize : "16px"
         }}>
         <h4>Prescription Details</h4>
         <div>

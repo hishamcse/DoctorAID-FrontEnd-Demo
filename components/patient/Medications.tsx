@@ -100,13 +100,14 @@ export default function Medications() {
         <Box
             sx={{ flexGrow: 1, bgcolor: 'background.paper', display: 'flex', height: '100%', width: '100%' }}
         >
+            <div style={{width: "30%"}}>
             <Tabs
                 orientation="vertical"
                 variant="scrollable"
                 value={value}
                 onChange={handleChange}
                 aria-label="Vertical tabs example"
-                sx={{ borderRight: 1, borderColor: 'divider', width: '30%', pl:10, pr:10 }}
+                sx={{ borderRight: 1, borderColor: 'divider', width: '100%', pl:10, pr:10 }}
             >
                 {medicines.map((medicine, index) => {
                     return (
@@ -114,6 +115,8 @@ export default function Medications() {
                     )
                 })}
             </Tabs>
+            </div>
+            <div style={{width: "70%"}}>
             {medicines.map((medicine, index) => {
                 return (
                     <TabPanel key={index + Math.random().toString()} value={value} index={index}>
@@ -121,7 +124,7 @@ export default function Medications() {
                     </TabPanel>
                 )
             })}
-
+            </div>
         </Box>
     );
 }

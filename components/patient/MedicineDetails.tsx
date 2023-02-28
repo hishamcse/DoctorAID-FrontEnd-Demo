@@ -31,7 +31,7 @@ const MedicineDetails:React.FC<{medicine: MedicineDetails}> = (props) => {
 
     return (
         <div style={{
-            fontSize : "20px"
+            fontSize : "16px"
         }}>
         <h4>Medicine Details</h4>
         <div>
