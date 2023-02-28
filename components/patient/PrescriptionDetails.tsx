@@ -52,7 +52,6 @@ function Arr2(cont : Medicine[], title : string){
                            <Box key={index + Math.random().toString()} sx={{ width: "100%"}}>
                              <Card variant="outlined">{customCard2(w)}</Card>
                            </Box>
-                            {/*&nbsp;*/}
                         </div>
                     )
                 })
