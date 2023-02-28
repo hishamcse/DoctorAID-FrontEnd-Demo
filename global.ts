@@ -40,15 +40,8 @@ function processPatientInfo(data : any[] | null){
     prescriptions = []
     prescriptionDetails = []
     data.forEach(element => {
-        prescriptions.push({
-            date : element.date,
-            diagnosis : element.diagnosis,
-            id : element.id
-        })
-        prescriptionDetails.push({
-            ...element
-        })
-
+        
+        let pdrugs : Medicine[] = []
         let el : any[] = element.prescribed_drugs
         el.forEach(med =>{
             // console.log(med)
@@ -57,15 +50,27 @@ function processPatientInfo(data : any[] | null){
                 ...m,
                 generic_name : m.general_name
             })
-            medicines.push({
+            let cdrugs : Medicine = {
                 name : m.brand_name,
                 dosage : med.strength,
                 frequency : med.dosage,
                 genericName : m.general_name,
                 startDate :  med.taking_from,
                 id : m.id
-                
-            })
+                ,prescription_id : med.prescription_id
+            };
+            medicines.push(cdrugs)
+            pdrugs.push(cdrugs)
+        })
+
+        prescriptions.push({
+            date : element.date,
+            diagnosis : element.diagnosis,
+            id : element.id
+        })
+        prescriptionDetails.push({
+            ...element,
+            prescribed_drugs : pdrugs
         })
     });
     medicines.sort((a, b)=>{
@@ -102,9 +107,15 @@ function getMedicines(){
 function getPatient(){
     return patient;
 }
+function getPrescriptions(){
+    return prescriptions
+}
 
 function getMedicineDetails(id : number){
     return medicineDetais.find((e => e.id == id))
 }
+function getPrescriptionDetails(id : number){
+    return prescriptionDetails.find((e=>e.id == id))
+}
 
-export {setPatient, getPatient, processPatientInfo, getMedicines, getMedicineDetails};
+export {setPatient, getPatient, getPrescriptionDetails, processPatientInfo, getMedicines, getMedicineDetails, getPrescriptions};

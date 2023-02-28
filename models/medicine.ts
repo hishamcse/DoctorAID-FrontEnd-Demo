@@ -5,6 +5,7 @@ export type Medicine = {
     frequency: string;
     startDate: string;
     id : number;
+    prescription_id : number;
 };
 
 export type MedicineDetails = {
@@ -45,5 +46,7 @@ export type PrescriptionDetails = {
     bp_high : number,
     heart_rate : number,
     symptomps : string[],
-    remarks : string[]
+    remarks : string[],
+    id : number,
+    prescribed_drugs : Medicine[]
 }
